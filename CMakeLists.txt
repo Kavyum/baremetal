@@ -6,8 +6,8 @@ project(baremetal)
 # select linker script
 set(LINKER_SCRIPT "ld/stm32f031x6.ld")
 
-# define CPU OPTIONS
-set(CPU_OPTIONS -mthumb -mcpu=cortex-m0)
+# define CPU OPTIONS - ALTERERED FROM M0 -
+set(CPU_OPTIONS -mthumb -mcpu=cortex-m33)
 
 # optimizations (-O0 -O1 -O2 -O3 -Os -Ofast -Og -flto)
 set(CMAKE_C_FLAGS_DEBUG "-Og -g -DDEBUG")
@@ -66,6 +66,7 @@ target_link_libraries(${PROJECT_NAME}
     m
     # -nostdlib
 )
+
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY LINK_DEPENDS ${CMAKE_SOURCE_DIR}/${LINKER_SCRIPT})
 
